@@ -37,8 +37,8 @@ A responsive and animated collapsible sidebar component built from scratch using
 Sidebar_Taskr/
 ├── index.html       # Main HTML file for the page structure
 ├── 📂 assets
-├── ├── style.css        # All CSS styling for the sidebar and content
-└── └── main.js        # JavaScript for sidebar toggle functionality
+├── style.css        # All CSS styling for the sidebar and content
+└── main.js        # JavaScript for sidebar toggle functionality
  
 ## 🎨 Customization
 
