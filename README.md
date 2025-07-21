@@ -38,7 +38,7 @@ Sidebar_Taskr/
 ├── index.html       # Main HTML file for the page structure
 ├── 📂 assets
 ├── ├── style.css        # All CSS styling for the sidebar and content
-└── └── script.js        # JavaScript for sidebar toggle functionality
+└── └── main.js        # JavaScript for sidebar toggle functionality
  
 ## 🎨 Customization
 
