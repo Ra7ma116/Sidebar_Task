@@ -36,13 +36,12 @@ A responsive and animated collapsible sidebar component built from scratch using
 ## 📂 Project Structure
 Sidebar_Task/
 │
-├── index.html       
+├── index.html
 ├── assets/
 │   ├── style.css
-│   └── main.js      
+│   └── main.js     
 
 
- 
 ## 🎨 Customization
 
 * **Colors:** Modify the `background-color` and `color` properties in `style.css` to match your brand.
