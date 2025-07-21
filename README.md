@@ -34,7 +34,7 @@ A responsive and animated collapsible sidebar component built from scratch using
     Simply open the `index.html` file in your preferred web browser.
 
 ## 📂 Project Structure
-Sidebar_Taskr/
+Sidebar_Task/
 ├── index.html       # Main HTML file for the page structure
 └── assets/          # Directory for static assets
 ├── style.css    # All CSS styling for the sidebar and content
