@@ -1,27 +1,13 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const sidebarToggle = document.getElementById('sidebarToggle');
+function toggleSidebar() {
     const sidebar = document.getElementById('sidebar');
-    const content = document.querySelector('.content');
+    const mainContent = document.getElementById('mainContent');
+    const toggleBtn = document.getElementById('toggleBtn');
 
-    function toggleSidebar() {
-        sidebar.classList.toggle('closed');
-        content.classList.toggle('sidebar-closed');
+    sidebar.classList.toggle('collapsed');
+    mainContent.classList.toggle('collapsed');
+    toggleBtn.classList.toggle('collapsed');
 
-        if (window.innerWidth <= 768) {
-            sidebar.classList.toggle('open');
-        }
-    }
-
-    if (window.innerWidth <= 768) {
-        sidebar.classList.add('closed');
-        content.classList.add('sidebar-closed');
-    }
-
-    sidebarToggle.addEventListener('click', toggleSidebar);
-
-    content.addEventListener('click', function (event) {
-        if (window.innerWidth <= 768 && sidebar.classList.contains('open') && !sidebar.contains(event.target) && !sidebarToggle.contains(event.target)) {
-            toggleSidebar();
-        }
-    });
-});
+    toggleBtn.innerHTML = sidebar.classList.contains('collapsed')
+        ? '<i class="fas fa-bars"></i>'
+        : '<i class="fas fa-times"></i>';
+}
