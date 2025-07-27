@@ -2,40 +2,39 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Collapsible Sidebar</title>
-    <link rel="stylesheet" href="assets/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stylish Collapsible Sidebar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="assets/style.css" />
 </head>
 
 <body>
-    <div class="sidebar-container">
-        <aside class="sidebar" id="sidebar">
-            <div class="sidebar-header">
-                <div class="logo-placeholder">
-                    <i class="fas fa-gem"></i>
-                </div>
-            </div>
-            <nav class="sidebar-nav">
-                <ul>
-                    <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
-                    <li><a href="#"><i class="fas fa-info-circle"></i> About</a></li>
-                    <li><a href="#"><i class="fas fa-cogs"></i> Services</a></li>
-                    <li><a href="#"><i class="fas fa-envelope"></i> Contact</a></li>
-                    <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
-                </ul>
-            </nav>
-        </aside>
-        <div class="content">
-            <button class="sidebar-toggle" id="sidebarToggle">
-                <i class="fas fa-bars"></i>
-            </button>
-            <h1>Welcome to the Main Content</h1>
-            <p>This is where your main page content will go. Click the toggle button to open and close the sidebar.</p>
-            <p>The sidebar is responsive and will adjust on smaller screens.</p>
+    <button class="toggle-btn" id="toggleBtn" onclick="toggleSidebar()">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div class="sidebar" id="sidebar">
+        <div class="logo-placeholder">
+            <img src="assets/sidebar.png" alt="Logo" />
+        </div>
+        <div class="sidebar-content">
+            <a href="#home"><i class="fas fa-home"></i> Home</a>
+            <a href="#about"><i class="fas fa-user"></i> About</a>
+            <a href="#services"><i class="fas fa-cogs"></i> Services</a>
+            <a href="#portfolio"><i class="fas fa-briefcase"></i> Portfolio</a>
+            <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
         </div>
     </div>
+
+    <div class="main-content" id="mainContent">
+        <h1>Main Content</h1>
+        <p>
+            This is the main content area. The sidebar can be toggled using the menu
+            button. Enjoy the sleek design and smooth animations!
+        </p>
+    </div>
+
     <script src="assets/main.js"></script>
 </body>
 
