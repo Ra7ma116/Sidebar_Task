@@ -1,38 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Stylish Collapsible Sidebar</title>
+    <title>Modern Collapsible Sidebar</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link rel="stylesheet" href="assets/style.css" />
 </head>
 
 <body>
-    <button class="toggle-btn" id="toggleBtn" onclick="toggleSidebar()">
+    <button class="toggle-btn" id="toggleBtn" aria-label="Toggle sidebar">
         <i class="fas fa-bars"></i>
     </button>
 
     <div class="sidebar" id="sidebar">
-        <div class="logo-placeholder">
-            <img src="assets/sidebar.png" alt="Logo" />
+        <div class="sidebar-header">
+            <img src="assets/sidebar.png" alt="Logo" class="logo" />
+            <h2 class="app-name">Dashboard</h2>
         </div>
         <div class="sidebar-content">
-            <a href="#home"><i class="fas fa-home"></i> Home</a>
-            <a href="#about"><i class="fas fa-user"></i> About</a>
-            <a href="#services"><i class="fas fa-cogs"></i> Services</a>
-            <a href="#portfolio"><i class="fas fa-briefcase"></i> Portfolio</a>
-            <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
+            <a href="#home" class="active"><i class="fas fa-home"></i> <span>Home</span></a>
+            <a href="#about"><i class="fas fa-user"></i> <span>About</span></a>
+            <a href="#services"><i class="fas fa-cogs"></i> <span>Services</span></a>
+            <a href="#portfolio"><i class="fas fa-briefcase"></i> <span>Portfolio</span></a>
+            <a href="#contact"><i class="fas fa-envelope"></i> <span>Contact</span></a>
+            <div class="sidebar-footer">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                    <span>Dark Mode</span>
+                </button>
+            </div>
         </div>
     </div>
 
     <div class="main-content" id="mainContent">
-        <h1>Main Content</h1>
-        <p>
-            This is the main content area. The sidebar can be toggled using the menu
-            button. Enjoy the sleek design and smooth animations!
+        <h1>Welcome to Your Dashboard</h1>
+        <p class="subtitle">
+            This is the main content area with smooth transitions and modern styling.
         </p>
+        <div class="content-card">
+            <p>
+                The sidebar now features enhanced animations, better mobile support,
+                and a sleek design. Try resizing the window or toggling dark mode!
+            </p>
+        </div>
     </div>
 
     <script src="assets/main.js"></script>
