@@ -34,13 +34,14 @@ A responsive and animated collapsible sidebar component built from scratch using
     Simply open the `index.html` file in your preferred web browser.
 
 ## 📂 Project Structure
+```
 Sidebar_Task/
 │
 ├── index.html
 ├── assets/
 │   ├── style.css
 │   └── main.js     
-
+```
 
 ## 🎨 Customization
 
