@@ -4,27 +4,44 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Modern Collapsible Sidebar</title>
+    <title>Enhanced Modern Dashboard</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/style.css" />
 </head>
 
 <body>
-    <button class="toggle-btn" id="toggleBtn" aria-label="Toggle sidebar">
+    <button class="toggle-btn" id="toggleBtn" aria-label="Toggle sidebar" aria-expanded="true">
         <i class="fas fa-bars"></i>
     </button>
 
     <div class="sidebar" id="sidebar">
         <div class="sidebar-header">
-            <img src="assets/sidebar.png" alt="Logo" class="logo" />
-            <h2 class="app-name">Dashboard</h2>
+            <img src="https://icon-library.com/images/sidebar-icon/sidebar-icon-19.jpg" alt="Logo" class="logo" />
+            <h2 class="app-name">Dashboard Pro</h2>
         </div>
         <div class="sidebar-content">
-            <a href="#home" class="active"><i class="fas fa-home"></i> <span>Home</span></a>
-            <a href="#about"><i class="fas fa-user"></i> <span>About</span></a>
-            <a href="#services"><i class="fas fa-cogs"></i> <span>Services</span></a>
-            <a href="#portfolio"><i class="fas fa-briefcase"></i> <span>Portfolio</span></a>
-            <a href="#contact"><i class="fas fa-envelope"></i> <span>Contact</span></a>
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search..." aria-label="Search">
+            </div>
+
+            <div class="user-profile">
+                <img src="https://tse4.mm.bing.net/th/id/OIP.-Zanaodp4hv0ry2WpuuPfgHaEf?rs=1&pid=ImgDetMain&o=7&rm=3" alt="User" class="user-avatar">
+                <div class="user-info">
+                    <div class="user-name">Rahma Samy</div>
+                    <div class="user-role">Web Developer</div>
+                </div>
+            </div>
+
+            <a href="#home" class="active" aria-current="page"><i class="fas fa-home"></i> <span>Home</span></a>
+            <a href="#analytics"><i class="fas fa-chart-line"></i> <span>Analytics</span></a>
+            <a href="#projects"><i class="fas fa-briefcase"></i> <span>Projects</span> <span class="badge">3</span></a>
+            <a href="#messages"><i class="fas fa-envelope"></i> <span>Messages</span> <span class="badge">5</span></a>
+            <a href="#calendar"><i class="fas fa-calendar-alt"></i> <span>Calendar</span></a>
+            <a href="#settings"><i class="fas fa-cog"></i> <span>Settings</span></a>
+            <a href="#help"><i class="fas fa-question-circle"></i> <span>Help Center</span></a>
+
             <div class="sidebar-footer">
                 <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
                     <i class="fas fa-moon"></i>
@@ -35,19 +52,54 @@
     </div>
 
     <div class="main-content" id="mainContent">
-        <h1>Welcome to Your Dashboard</h1>
+        <h1>Welcome to Dashboard Pro</h1>
         <p class="subtitle">
-            This is the main content area with smooth transitions and modern styling.
+            A modern, responsive dashboard with enhanced features, smooth animations, and improved accessibility.
+            Manage your data efficiently with this intuitive interface.
         </p>
+
+        <div class="grid-container">
+            <div class="stat-card">
+                <i class="fas fa-users"></i>
+                <div class="stat-value">1,254</div>
+                <div class="stat-label">Total Users</div>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-shopping-cart"></i>
+                <div class="stat-value">324</div>
+                <div class="stat-label">New Orders</div>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-chart-pie"></i>
+                <div class="stat-value">$12,345</div>
+                <div class="stat-label">Total Revenue</div>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-tasks"></i>
+                <div class="stat-value">87%</div>
+                <div class="stat-label">Completion Rate</div>
+            </div>
+        </div>
+
         <div class="content-card">
+            <h2>Recent Activity</h2>
             <p>
-                The sidebar now features enhanced animations, better mobile support,
-                and a sleek design. Try resizing the window or toggling dark mode!
+                The enhanced sidebar now features smooth animations, better mobile support, and a sleek design.
+                Try resizing the window or toggling dark mode! The dashboard includes new features like:
             </p>
+            <ul style="margin-top: 16px; padding-left: 20px;">
+                <li>User profile section</li>
+                <li>Search functionality</li>
+                <li>Notification badges</li>
+                <li>Improved accessibility</li>
+                <li>Enhanced animations</li>
+            </ul>
         </div>
     </div>
 
-    <script src="assets/main.js"></script>
+    <script src="assets/main.js">
+      
+    </script>
 </body>
 
 </html>
