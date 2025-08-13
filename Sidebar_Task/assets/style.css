@@ -1,7 +1,7 @@
 :root {
-    --sidebar-width: 280px;
+    --sidebar-width: 300px;
     --sidebar-bg: linear-gradient(160deg, #1e3a8a 0%, #3b82f6 100%);
-    --sidebar-text: #ffffff;
+    --sidebar-text: rgba(255, 255, 255, 0.9);
     --sidebar-hover: rgba(255, 255, 255, 0.15);
     --sidebar-active: rgba(255, 255, 255, 0.25);
     --sidebar-shadow: 4px 0 20px rgba(0, 0, 0, 0.15);
@@ -9,10 +9,12 @@
     --main-text: #1e293b;
     --card-bg: #ffffff;
     --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-    --transition-speed: 0.3s;
+    --transition-speed: 0.4s;
     --border-radius: 12px;
     --toggle-btn-bg: linear-gradient(45deg, #3b82f6, #60a5fa);
     --toggle-btn-hover: linear-gradient(45deg, #2563eb, #3b82f6);
+    --accent-color: #3b82f6;
+    --notification-badge: #ef4444;
 }
 
 [data-theme="dark"] {
@@ -20,6 +22,7 @@
     --main-text: #f8fafc;
     --card-bg: #1e293b;
     --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    --sidebar-text: rgba(255, 255, 255, 0.85);
 }
 
 * {
@@ -32,8 +35,9 @@ body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     background-color: var(--main-bg);
     color: var(--main-text);
-    transition: background-color var(--transition-speed) ease;
+    transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
     line-height: 1.6;
+    overflow-x: hidden;
 }
 
 .sidebar {
@@ -50,6 +54,7 @@ body {
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    will-change: transform;
 }
 
 .sidebar.collapsed {
@@ -60,25 +65,31 @@ body {
     padding: 24px;
     text-align: center;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
 }
 
 .logo {
-    max-width: 120px;
-    height: auto;
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid rgba(255, 255, 255, 0.2);
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
     margin-bottom: 12px;
-    transition: transform 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .logo:hover {
     transform: scale(1.05);
+    border-color: rgba(255, 255, 255, 0.4);
 }
 
 .app-name {
     color: white;
-    font-size: 1.25rem;
+    font-size: 1.4rem;
     font-weight: 600;
     margin-top: 8px;
+    letter-spacing: 0.5px;
 }
 
 .sidebar-content {
@@ -87,6 +98,55 @@ body {
     display: flex;
     flex-direction: column;
     overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+}
+
+.sidebar-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.sidebar-content::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 3px;
+}
+
+.sidebar-content::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.search-bar {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 12px 16px 12px 42px;
+    border-radius: var(--border-radius);
+    border: none;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.search-bar input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.search-bar input:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2);
+}
+
+.search-bar i {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, 0.7);
 }
 
 .sidebar-content a {
@@ -124,11 +184,13 @@ body {
 
 .sidebar-content a:hover {
     background-color: var(--sidebar-hover);
+    transform: translateX(4px);
 }
 
 .sidebar-content a.active {
     background-color: var(--sidebar-active);
     font-weight: 600;
+    transform: translateX(8px);
 }
 
 .sidebar-content a.active::before {
@@ -139,12 +201,87 @@ body {
     font-size: 18px;
     min-width: 24px;
     text-align: center;
+    transition: transform 0.2s ease;
+}
+
+.sidebar-content a:hover i {
+    transform: scale(1.1);
+}
+
+.badge {
+    display: inline-block;
+    background-color: var(--notification-badge);
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+    padding: 3px 6px;
+    border-radius: 10px;
+    margin-left: auto;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
 }
 
 .sidebar-footer {
     margin-top: auto;
     padding: 16px 0;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    margin-bottom: 16px;
+    border-radius: var(--border-radius);
+    transition: background-color var(--transition-speed) ease;
+}
+
+.user-profile:hover {
+    background-color: var(--sidebar-hover);
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.user-info {
+    flex: 1;
+    overflow: hidden;
+}
+
+.user-name {
+    color: white;
+    font-weight: 600;
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.user-role {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .theme-toggle {
@@ -160,11 +297,12 @@ body {
     cursor: pointer;
     font-size: 15px;
     font-weight: 500;
-    transition: background-color var(--transition-speed) ease;
+    transition: all var(--transition-speed) ease;
 }
 
 .theme-toggle:hover {
     background-color: var(--sidebar-hover);
+    transform: translateX(4px);
 }
 
 .toggle-btn {
@@ -187,12 +325,11 @@ body {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     transition: all var(--transition-speed) ease;
     border: 2px solid rgba(255, 255, 255, 0.1);
-    transition: left var(--transition-speed) ease;
 }
 
 .toggle-btn:hover {
     background: var(--toggle-btn-hover);
-    transform: scale(1.1);
+    transform: scale(1.1) rotate(90deg);
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
 }
 
@@ -219,24 +356,87 @@ body {
     box-shadow: var(--card-shadow);
     margin-top: 24px;
     transition: all var(--transition-speed) ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.content-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--accent-color);
+    transition: width 0.3s ease;
 }
 
 .content-card:hover {
-    transform: translateY(-2px);
+    transform: translateY(-5px);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.content-card:hover::before {
+    width: 8px;
 }
 
 h1 {
     color: var(--main-text);
     margin-bottom: 12px;
-    font-size: 2.25rem;
+    font-size: 2.5rem;
     font-weight: 700;
+    background: linear-gradient(45deg, #3b82f6, #10b981);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    display: inline-block;
 }
 
 .subtitle {
     color: #64748b;
     font-size: 1.1rem;
     max-width: 600px;
+    line-height: 1.7;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
+    margin-top: 32px;
+}
+
+.stat-card {
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    padding: 24px;
+    box-shadow: var(--card-shadow);
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.stat-card i {
+    font-size: 28px;
+    margin-bottom: 16px;
+    color: var(--accent-color);
+}
+
+.stat-value {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.stat-label {
+    color: #64748b;
+    font-size: 14px;
+    font-weight: 500;
 }
 
 @media (max-width: 992px) {
@@ -267,7 +467,7 @@ h1 {
     }
 
     h1 {
-        font-size: 1.8rem;
+        font-size: 2rem;
     }
 
     .content-card {
@@ -295,5 +495,9 @@ h1 {
 
     .content-card {
         padding: 20px;
+    }
+
+    .grid-container {
+        grid-template-columns: 1fr;
     }
 }
