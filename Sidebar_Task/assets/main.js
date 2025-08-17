@@ -12,15 +12,13 @@ function toggleSidebar() {
     toggleBtn.innerHTML = `<i class="fas ${icon}"></i>`;
     toggleBtn.setAttribute('aria-expanded', !isCollapsed);
 
-    // Save state to localStorage
     localStorage.setItem('sidebarCollapsed', isCollapsed);
 }
 
 function setActiveMenuItem() {
     const links = document.querySelectorAll('.sidebar-content a:not(.user-profile)');
     links.forEach(link => {
-        link.addEventListener('click', function (e) {
-            // Don't prevent default for anchor links
+        link.addEventListener('click', function(e) {
             if (this.getAttribute('href').startsWith('#')) {
                 e.preventDefault();
             }
@@ -43,9 +41,9 @@ function toggleTheme() {
 
     html.setAttribute('data-theme', isDark ? 'light' : 'dark');
 
-    themeToggle.innerHTML = isDark
-        ? '<i class="fas fa-moon"></i><span>Dark Mode</span>'
-        : '<i class="fas fa-sun"></i><span>Light Mode</span>';
+    themeToggle.innerHTML = isDark ?
+        '<i class="fas fa-moon"></i><span>Dark Mode</span>' :
+        '<i class="fas fa-sun"></i><span>Light Mode</span>';
 
     localStorage.setItem('theme', isDark ? 'light' : 'dark');
 }
@@ -70,7 +68,6 @@ function handleKeyboardNavigation(e) {
 }
 
 function init() {
-    // Theme initialization
     const savedTheme = localStorage.getItem('theme');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
@@ -79,13 +76,11 @@ function init() {
         document.getElementById('themeToggle').innerHTML = '<i class="fas fa-sun"></i><span>Light Mode</span>';
     }
 
-    // Sidebar state initialization
     const sidebarCollapsed = localStorage.getItem('sidebarCollapsed') === 'true';
     if (sidebarCollapsed && window.innerWidth > 768) {
         toggleSidebar();
     }
 
-    // Event listeners
     document.getElementById('toggleBtn').addEventListener('click', toggleSidebar);
     document.getElementById('themeToggle').addEventListener('click', toggleTheme);
     document.addEventListener('click', closeSidebarOnClickOutside);
@@ -93,7 +88,6 @@ function init() {
 
     setActiveMenuItem();
 
-    // Auto-collapse sidebar on mobile
     if (window.innerWidth <= 768) {
         const sidebar = document.getElementById('sidebar');
         if (!sidebar.classList.contains('collapsed')) {
@@ -102,7 +96,6 @@ function init() {
     }
 }
 
-// Handle window resize
 function handleResize() {
     const sidebar = document.getElementById('sidebar');
     if (window.innerWidth > 768 && sidebar.classList.contains('collapsed')) {
